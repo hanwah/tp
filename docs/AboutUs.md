@@ -9,34 +9,36 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ## Project team
 
-### John Doe
+### Jie Sheng
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/Depsheng.png" width="200px">
 
-[[homepage](http://www.comp.nus.edu.sg/~damithch)]
-[[github](https://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+
+[[github](https://github.com/Depsheng)]
 
 * Role: Project Advisor
+* Responsibilities: UI/logic
+* Hobbies: Gym, Video Games
 
-### Jane Doe
+### Dylan Yeo
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/dylanyeo20.png" width="200px">
 
-[[github](http://github.com/johndoe)]
+[[github](https://github.com/dylanyeo20)]
 [[portfolio](team/johndoe.md)]
 
 * Role: Team Lead
-* Responsibilities: UI
+* Responsibilities: Logic 
 
-### Johnny Doe
+### Ze Le
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/just-chocomint.png" width="200px">
 
-[[github](http://github.com/johndoe)] [[portfolio](team/johndoe.md)]
+[[github](Just-Chocomint)] 
 
 * Role: Developer
-* Responsibilities: Data
+* Responsibilities: UI/Logic
+* Hobbies: Video Games
 
 ### Hanwah
 
@@ -49,12 +51,13 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 * Responsibilities: Dev Ops + Threading
 * Hobbies: Gym + Running
 
-### James Doe
+### Melville Lee
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/professional.png" width="200px">
 
-[[github](http://github.com/johndoe)]
+[[github](http://github.com/Melvilleleesy)]
 [[portfolio](team/johndoe.md)]
 
 * Role: Developer
-* Responsibilities: UI
+* Responsibilities: UI, testing, documentation
+* Hobbies: Walking at 6am
