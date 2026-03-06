@@ -40,15 +40,16 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 * Responsibilities: UI/Logic
 * Hobbies: Video Games
 
-### Jean Doe
+### Hanwah
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/Hanwah.png" width="200px">
 
-[[github](http://github.com/johndoe)]
+[[github](https://github.com/hanwah)]
 [[portfolio](team/johndoe.md)]
 
 * Role: Developer
 * Responsibilities: Dev Ops + Threading
+* Hobbies: Gym + Running
 
 ### Melville Lee
 
