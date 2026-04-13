@@ -479,7 +479,7 @@ Furthermore, certain edits can cause CLIentTracker to behave in unexpected ways 
 
 ---
 
-## Email Rules {: #email-rules }
+## Email Rules
 
 Emails must follow the format `local-part@domain`.
 
