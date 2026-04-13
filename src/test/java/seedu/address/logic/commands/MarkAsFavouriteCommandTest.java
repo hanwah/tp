@@ -4,6 +4,8 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
+import static seedu.address.logic.commands.CommandTestUtil.showPersonAtIndex;
+import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 
 import java.util.ArrayList;
@@ -81,6 +83,31 @@ public class MarkAsFavouriteCommandTest {
         assertCommandSuccess(command, new ModelManager(getTypicalAddressBook(), new UserPrefs()),
                 String.format(MarkAsFavouriteCommand.MESSAGE_MARK_PERSON_SUCCESS, personToEdit.getName()),
                 testModel);
+    }
+
+    @Test
+    public void execute_filteredList_preservesFilter_success() {
+        Model actualModel = new ModelManager(getTypicalAddressBook(), new UserPrefs());
+        Model expectedModel = new ModelManager(getTypicalAddressBook(), new UserPrefs());
+        showPersonAtIndex(actualModel, INDEX_FIRST_PERSON);
+        showPersonAtIndex(expectedModel, INDEX_FIRST_PERSON);
+
+        Person personToEdit = expectedModel.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
+        Person markedPerson = new Person(
+                personToEdit.getName(),
+                personToEdit.getPhone(),
+                personToEdit.getEmail(),
+                personToEdit.getAddress(),
+                personToEdit.getDetails(),
+                personToEdit.getTags(),
+                true,
+                personToEdit.getMeeting().orElse(null));
+        expectedModel.setPerson(personToEdit, markedPerson);
+
+        MarkAsFavouriteCommand command = new MarkAsFavouriteCommand(INDEX_FIRST_PERSON);
+        assertCommandSuccess(command, actualModel,
+                String.format(MarkAsFavouriteCommand.MESSAGE_MARK_PERSON_SUCCESS, personToEdit.getName()),
+                expectedModel);
     }
 
     /**

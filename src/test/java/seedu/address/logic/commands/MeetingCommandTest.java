@@ -79,6 +79,34 @@ public class MeetingCommandTest {
     }
 
     @Test
+    public void execute_filteredList_preservesFilter_success() throws Exception {
+        Model actualModel = new ModelManager(getTypicalAddressBook(), new UserPrefs());
+        Model expectedModel = new ModelManager(getTypicalAddressBook(), new UserPrefs());
+        showPersonAtIndex(actualModel, INDEX_FIRST_PERSON);
+        showPersonAtIndex(expectedModel, INDEX_FIRST_PERSON);
+
+        Person personToEdit = expectedModel.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
+        Meeting meeting = new Meeting(LocalDateTime.of(2030, 3, 25, 14, 30));
+        Person updatedPerson = new Person(
+                personToEdit.getName(),
+                personToEdit.getPhone(),
+                personToEdit.getEmail(),
+                personToEdit.getAddress(),
+                personToEdit.getDetails(),
+                personToEdit.getTags(),
+                personToEdit.getIsFavourite(),
+                meeting);
+        expectedModel.setPerson(personToEdit, updatedPerson);
+
+        MeetingCommand command = new MeetingCommand(INDEX_FIRST_PERSON, meeting);
+        CommandResult commandResult = command.execute(actualModel);
+
+        assertEquals(String.format(MeetingCommand.MESSAGE_MEETING_ADDED, updatedPerson.getName(),
+                "25 Mar 2030 2:30 pm"), commandResult.getFeedbackToUser());
+        assertEquals(expectedModel, actualModel);
+    }
+
+    @Test
     public void execute_clearMeeting_success() throws Exception {
         Model actualModel = new ModelManager(getTypicalAddressBook(), new UserPrefs());
         Model expectedModel = new ModelManager(getTypicalAddressBook(), new UserPrefs());

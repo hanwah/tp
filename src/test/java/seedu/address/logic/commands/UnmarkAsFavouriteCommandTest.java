@@ -4,6 +4,8 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
+import static seedu.address.logic.commands.CommandTestUtil.showPersonAtIndex;
+import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 
 import java.util.ArrayList;
@@ -73,6 +75,34 @@ public class UnmarkAsFavouriteCommandTest {
         assertCommandSuccess(command, testModel,
                 String.format(UnmarkAsFavouriteCommand.MESSAGE_UNMARK_PERSON_SUCCESS, personToEdit.getName()),
                 testModel);
+    }
+
+    @Test
+    public void execute_filteredList_preservesFilter_success() throws Exception {
+        Model actualModel = new ModelManager(getTypicalAddressBook(), new UserPrefs());
+        Model expectedModel = new ModelManager(getTypicalAddressBook(), new UserPrefs());
+
+        new MarkAsFavouriteCommand(INDEX_FIRST_PERSON).execute(actualModel);
+        new MarkAsFavouriteCommand(INDEX_FIRST_PERSON).execute(expectedModel);
+        showPersonAtIndex(actualModel, INDEX_FIRST_PERSON);
+        showPersonAtIndex(expectedModel, INDEX_FIRST_PERSON);
+
+        Person personToEdit = expectedModel.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
+        Person unmarkedPerson = new Person(
+                personToEdit.getName(),
+                personToEdit.getPhone(),
+                personToEdit.getEmail(),
+                personToEdit.getAddress(),
+                personToEdit.getDetails(),
+                personToEdit.getTags(),
+                false,
+                personToEdit.getMeeting().orElse(null));
+        expectedModel.setPerson(personToEdit, unmarkedPerson);
+
+        UnmarkAsFavouriteCommand command = new UnmarkAsFavouriteCommand(INDEX_FIRST_PERSON);
+        assertCommandSuccess(command, actualModel,
+                String.format(UnmarkAsFavouriteCommand.MESSAGE_UNMARK_PERSON_SUCCESS, personToEdit.getName()),
+                expectedModel);
     }
 
     /**
