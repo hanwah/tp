@@ -868,5 +868,5 @@ Team size: 5
 
 1. Notify users when past meetings are removed: The current meeting cleanup removes past meetings when the app opens, but users are not explicitly notified when this happens. We plan to display a startup notification such as `1 past meeting(s) removed.` when past meetings are removed from loaded contact data.
 
-1. Currently, modifying commands do not handle search filters consistently. Commands such as mark, unmark, and meeting preserve the active filter, while edit and undo reset the view to show the full contact list. This may cause unexpected changes to the displayed list when users are working within a filtered view. A future improvement is to standardise filter handling so all modifying commands behave consistently.
+1. Currently, modifying commands do not handle search filters consistently. Commands such as mark, unmark, and meeting preserve the active filter, while edit and undo reset the view to show the full contact list. This may cause unexpected changes to the displayed list when users are working within a filtered view. 
 
